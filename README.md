@@ -59,42 +59,46 @@ The system consists of the following components:
 | Data Modeling | Star Schema | Analytical data model for fact and dimension tables |
 | Data Architecture | Medallion Architecture | Layered pipeline design (Bronze → Silver → Gold) |
 | Version Control | Git & GitHub | Source code management and collaboration |
-## CHapter 4 - Project Structure
+## Chapter 4 - Project Structure
 
+The repository is organized as follows:
+
+```
 project-root
 │
 ├── dags/
-│   └── elt_pipeline.py              # Apache Airflow DAG definition
+│   └── elt_pipeline.py           # Apache Airflow DAG definition
 │
 ├── script/
-│   ├── extract.py                   # Extract data from PostgreSQL
-│   └── load.py                      # Load data to GCS / BigQuery
+│   ├── extract.py                # Extract data from PostgreSQL
+│   └── load.py                   # Load data to GCS / BigQuery
 │
-├── transform/                      # dbt project for transformations
+├── transform/                    # dbt project for transformations
 │   ├── models/
-│   │   ├── silver/                  # Cleaned intermediate tables
+│   │   ├── silver/               # Cleaned intermediate tables
 │   │   │   ├── silver_orders.sql
 │   │   │   └── silver_products.sql
 │   │   │
-│   │   └── gold/                    # Analytics-ready star schema
+│   │   └── gold/                 # Analytics-ready star schema
 │   │       ├── fact_sales.sql
 │   │       ├── dim_customers.sql
 │   │       └── dim_products.sql
 │   │
-│   ├── macros/                      # Reusable dbt macros
-│   ├── tests/                       # Data quality tests
-│   ├── seeds/                       # Static seed data
-│   ├── snapshots/                   # Slowly changing dimension tracking
-│   ├── dbt_packages/                # Installed dbt dependencies
-│   ├── dbt_project.yml              # dbt project configuration
-│   └── profiles.yml                 # dbt connection configuration
+│   ├── macros/                   # Reusable dbt macros
+│   ├── tests/                    # Data quality tests
+│   ├── seeds/                    # Static seed data
+│   ├── snapshots/                # Slowly changing dimension tracking
+│   ├── dbt_packages/             # Installed dbt dependencies
+│   ├── dbt_project.yml           # dbt project configuration
+│   └── profiles.yml              # dbt connection configuration
 │
-├── images/                          # Documentation images
-├── logs/                            # Pipeline execution logs
-├── .env                             # Environment variables
+├── images/                       # Documentation images
+├── logs/                         # Pipeline execution logs
+├── .env                          # Environment variables
 ├── .gitignore
 ├── README.md
-└── venv/                            # Python virtual environment
+└── venv/                         # Python virtual environment
+```
 
 ## Chapter 5 - Data Engineering Features
 
