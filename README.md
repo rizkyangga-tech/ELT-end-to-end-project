@@ -48,36 +48,21 @@ The system consists of the following components:
 
 ## Chapter 3 - Tech Stack
 
-This project uses the following technologies:
-
-### Programming
-- Python
-
-### Data Source
-- PostgreSQL
-
-### Data Lake
-- Google Cloud Storage (GCS)
-
-### Data Warehouse
-- BigQuery
-
-### Data Transformation
-- dbt (Data Build Tool)
-
-### Orchestration
-- Apache Airflow
-
-### Data Modeling
-- Star Schema
-- medalion
-### Version Control
-- Git & GitHub
-
+| Category | Tool | Purpose |
+|--------|--------|--------|
+| Programming | Python | Data extraction and loading scripts |
+| Data Source | PostgreSQL | Operational database used as the source system |
+| Data Lake | Google Cloud Storage (GCS) | Storage for raw ingested data (Bronze layer) |
+| Data Warehouse | BigQuery | Analytical warehouse for querying processed data |
+| Data Transformation | dbt | SQL-based transformations, data tests, and incremental models |
+| Orchestration | Apache Airflow | Scheduling, retries, backfilling, and SLA monitoring |
+| Data Modeling | Star Schema | Analytical data model for fact and dimension tables |
+| Data Architecture | Medallion Architecture | Layered pipeline design (Bronze → Silver → Gold) |
+| Version Control | Git & GitHub | Source code management and collaboration |
 ## CHapter 4 - Project Structure
 
-The repository is organized as follows:
 ![ELT Pipeline Structure](images/structure.png)
+
 ## Chapter 5 - Data Engineering Features
 
 This project implements several production-oriented data engineering practices to ensure reliability, scalability, and maintainability of the data pipeline.
