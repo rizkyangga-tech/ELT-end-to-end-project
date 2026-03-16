@@ -249,5 +249,5 @@ Use the Airflow UI to monitor task execution, logs, retries, and task dependenci
 ### 5. RESULT
 
 
-![airflow](images/ariflow.png)
+![airflow](images/airflow.png)
 
