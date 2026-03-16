@@ -77,45 +77,7 @@ This project uses the following technologies:
 ## CHapter 4 - Project Structure
 
 The repository is organized as follows:
-
-.
-├── dags/                         # Apache Airflow DAG definitions
-│   └── elt_pipeline.py
-│
-├── script/                       # Python scripts for data ingestion
-│   ├── extract.py                # Extract data from PostgreSQL
-│   └── load.py                   # Load data into Google Cloud Storage / BigQuery
-│
-├── transform/                    # dbt project for data transformation
-│   ├── models/
-│   │   ├── silver/               # Intermediate cleaned tables
-│   │   │   ├── silver_orders.sql
-│   │   │   ├── silver_products.sql
-│   │   │   └── ...
-│   │   │
-│   │   └── gold/                 # Analytics-ready models (Star Schema)
-│   │       ├── fact_sales.sql
-│   │       ├── dim_customers.sql
-│   │       ├── dim_products.sql
-│   │       └── ...
-│   │
-│   ├── macros/                   # Reusable dbt macros
-│   ├── tests/                    # Data quality tests
-│   ├── seeds/                    # Static seed data
-│   ├── snapshots/                # Slowly changing dimension tracking
-│   ├── dbt_packages/             # Installed dbt dependencies
-│   ├── dbt_project.yml           # dbt project configuration
-│   └── profiles.yml              # dbt connection configuration
-│
-├── images/                       # Documentation images
-│
-├── logs/                         # Pipeline execution logs
-│
-├── .env                          # Environment variables
-├── .gitignore
-├── README.md
-└── venv/                         # Python virtual environment
-
+![ELT Pipeline Structure](images/structure.png)
 ## Chapter 5 - Data Engineering Features
 
 This project implements several production-oriented data engineering practices to ensure reliability, scalability, and maintainability of the data pipeline.
