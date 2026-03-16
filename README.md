@@ -1,24 +1,39 @@
 # END TO END ELT PIPELINE
 ## Chapter 1 - Project Overview
+This project implements an end-to-end ELT (Extract, Load, Transform) data pipeline designed to process transactional **e-commerce data** and transform it into analytics-ready datasets.
 
-This project implements an end-to-end **ELT (Extract, Load, Transform)** data pipeline designed to process transactional data and transform it into analytics-ready datasets.
+The pipeline extracts data from a PostgreSQL operational database using Python, stores raw data in Google Cloud Storage as the **Bronze layer**, loads it into **BigQuery as the Silver layer**, and performs transformations using **dbt** to build curated **Gold data marts** for analytics.
 
-The pipeline extracts data from **PostgreSQL** using **Python**, stores raw data in **Google Cloud Storage** as the Bronze layer, loads it into **BigQuery** as the Silver layer, and performs transformations using **dbt** to produce curated Gold tables for analytics.
+The source system simulates an e-commerce transactional database containing **approximately 3 million rows of data** across multiple tables, including:
 
-The workflow is orchestrated using **Apache Airflow** to ensure reliable scheduling, retries, and monitoring.
+- customers
+- employees
+- stores
+- orders
+- order_items
+- products
+- categories
 
-This project demonstrates several production-oriented data engineering practices such as:
-- incremental loading
-- idempotent pipelines
-- logging
-- retry mechanisms
-- data quality validation
-- CI/CD 
-- Backfill
-- monitoring and alerting
-- SLA
-- Data freshness
-- data late arriving handling
+Using dbt, these operational tables are transformed into an analytics-ready **star schema data mart** consisting of:
+
+- **fact_sales** – transactional sales fact table  
+- **dim_customers** – customer dimension  
+- **dim_products** – product dimension  
+- **dim_stores** – store dimension  
+- **dim_employees** – employee dimension  
+
+The workflow is orchestrated using **Apache Airflow**, ensuring reliable scheduling, monitoring, and failure recovery.
+
+This project demonstrates several production-oriented data engineering practices:
+
+- Incremental data loading  
+- Idempotent pipeline design  
+- Logging and retry mechanisms  
+- Data quality validation with dbt tests  
+- Backfilling for historical data processing  
+- SLA monitoring and data freshness tracking  
+- Late arriving data handling  
+- CI/CD automation using GitHub Actions
 
  ## Chapter 2 - System Architecture
 
@@ -230,3 +245,8 @@ Trigger the DAG manually or wait for the scheduled execution.
 ### 4. Monitor Pipeline Execution
 
 Use the Airflow UI to monitor task execution, logs, retries, and task dependencies.
+
+### 5. RESULT
+
+![airflow](images/ariflow.png)
+
