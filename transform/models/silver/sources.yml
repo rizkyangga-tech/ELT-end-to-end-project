@@ -1,0 +1,76 @@
+version: 2
+
+sources:
+  - name: raw_ecommerce
+    database: project-f24d43f9-d692-4550-a53
+    schema: raw_ecommerce
+
+    tables:
+      - name: customers
+        config:
+          freshness:
+            warn_after: {count: 24, period: hour}
+            error_after: {count: 36, period: hour}
+        columns:
+          - name: customer_id
+            tests:
+              - not_null
+
+      - name: orders
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+          - name: store_id
+            tests:
+              - not_null
+          - name: employee_id
+            tests:
+              - not_null
+
+      - name: categories
+        config:
+          freshness:
+            warn_after: {count: 24, period: hour}
+            error_after: {count: 36, period: hour}
+        columns:
+          - name: category_id
+            tests:
+              - not_null
+
+      - name: employees
+        columns:
+          - name: employee_id
+            tests:
+              - not_null
+          - name: store_id
+            tests:
+              - not_null
+
+      - name: order_items
+        columns:
+          - name: order_item_id
+            tests:
+              - not_null
+          - name: order_id
+            tests:
+              - not_null
+          - name: product_id
+            tests:
+              - not_null
+
+      - name: products
+        config:
+          freshness:
+            warn_after: {count: 24, period: hour}
+            error_after: {count: 36, period: hour}
+        columns:
+          - name: product_id
+            tests:
+              - not_null
+
+      - name: stores
+        columns:
+          - name: store_id
+            tests:
+              - not_null
