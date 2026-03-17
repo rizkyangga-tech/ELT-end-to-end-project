@@ -248,15 +248,12 @@ Use the Airflow UI to monitor task execution, logs, retries, and task dependenci
 
 ### 5. RESULT
 
-AIRFLOW
+
 ![airflow](images/airflow.png)
 
-RAW DATA
 ![raw](images/raw.png)
 
-SILVER
 ![silver](images/silver.png)
 
-GOLD
 ![gold](images/gold.png)
 
